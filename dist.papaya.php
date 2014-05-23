@@ -86,7 +86,7 @@ define('PAPAYA_SESSION_NAME', '');
 /**
 * development mode - show parse errors for base includes and some other stuff
 */
-define('PAPAYA_DBG_DEVMODE', FALSE);
+define('PAPAYA_DBG_DEVMODE', ${papaya.development.active});
 /**
 * development mode - show parse errors for base includes and some other stuff
 */

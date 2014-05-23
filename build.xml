@@ -72,13 +72,30 @@
     <property name="config.template" value="${directory.src}/dist.papaya.php" />
     <property name="config.file" value="${directory.src}/papaya.php" />
     <property name="papaya.database.uri" value="${database.uri}" />
-    <delete file="${config.file}"/>
-    <copy file="${config.template}" tofile="${config.file}">
-      <filterchain>
-        <expandproperties />
-      </filterchain>
-    </copy>
+    <property name="papaya.development.active" value="(bool)TRUE" />
+    <if>
+      <not>
+        <available file="${config.file}"/>
+      </not>
+      <then>
+        <copy file="${config.template}" tofile="${config.file}">
+          <filterchain>
+            <expandproperties />
+          </filterchain>
+        </copy>
+      </then>
+      <else>
+        <warn message="papaya.php already exists. Skipped."/>
+      </else>
+    </if>
   </target>
+
+  <target name="config-remove" description="Remove configuration" hidden="yes">
+    <property name="config.file" value="${directory.src}/papaya.php" />
+    <delete file="${config.file}"/>
+  </target>
+
+  <target name="config-regenerate"  depends="config-remove,config" description="Regenerate configuration"/>
 
   <target name="prepare" description="Generate directories">
     <mkdir dir="${directory.src}/papaya-data/cache" mode="${mode.writeable}"/>
@@ -104,6 +121,7 @@
     <property name="config.template" value="${directory.src}/dist.papaya.php" />
     <property name="config.file" value="${directory.export}/source/papaya.php" />
     <property name="papaya.database.uri" value="${dist.database.uri}" />
+    <property name="papaya.development.active" value="(bool)FALSE" />
     <copy file="${config.template}" tofile="${config.file}">
       <filterchain>
         <expandproperties />
