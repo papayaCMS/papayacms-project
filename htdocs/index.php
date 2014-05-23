@@ -4,7 +4,7 @@
 * file delivery (if not static or themes). It also handles basic system errors like lack
 * of the papaya library, static error document and maintenance mode.
 *
-* @copyright 2002-2014 by papaya Software GmbH - All rights reserved.
+* @copyright 2002-2014 by dimensional GmbH - All rights reserved.
 * @link http://www.papaya-cms.com/
 * @license   GNU General Public Licence (GPL) 2 http://www.gnu.org/copyleft/gpl.html
 *
