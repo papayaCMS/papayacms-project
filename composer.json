@@ -1,0 +1,26 @@
+{
+  "name": "papaya/cms-project",
+  "description": "papaya CMS Project Skeleton",
+  "minimum-stability": "dev",
+  "extra" : {
+    "document-root" : "htdocs/",
+    "papaya" : {
+      "template-directory": "templates/"
+    }
+  },
+  "require": {
+    "papaya/cms-core": "*",
+    "papaya/cms-administration": "*",
+    "papaya/module-default": "*",
+    "papaya/module-standard": "*"
+  },
+  "require-dev": {
+    "papaya/test-framework": "*"
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://composer.dev.dim/"
+    }
+  ]
+}

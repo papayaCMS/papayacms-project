@@ -1,0 +1,25 @@
+# Composer
+/vendor
+composer.phar
+
+# PHPStorm
+/.idea
+
+# Eclipse
+/.settings
+/.project
+/.buildpath
+
+# Netbeans
+/nbproject
+
+# Build Artifacts
+/build
+
+# papaya CMS
+/papaya.php
+/htdocs/conf.inc.php
+/htdocs/papaya
+/papaya-data
+
+
