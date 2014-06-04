@@ -1,6 +1,8 @@
 {
   "name": "papaya/cms-project",
   "description": "papaya CMS Project Skeleton",
+  "license": "GPL",
+  "homepage": "http://www.papaya-cms.com/",
   "minimum-stability": "dev",
   "extra" : {
     "document-root" : "htdocs/",
@@ -16,11 +18,5 @@
   },
   "require-dev": {
     "papaya/test-framework": "*"
-  },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "http://composer.dev.dim/"
-    }
-  ]
+  }
 }
