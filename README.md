@@ -1,6 +1,6 @@
 # Papaya CMS Project Skeleton
 
-This is a project skeleton for your own papayaCMS projects. It allows to use
+This is a project skeleton for your own [papayaCMS](http://www.papaya-cms.com) projects. It allows to use
 [Composer](http://getcomposer.org) for project initialization.
 
 ```
@@ -44,7 +44,7 @@ directory to your project and develop/maintain the theme there.
 
 ## Phing build file
 
-The Skeleton includes a build file for (Phing)[http://www.phing.org]. It uses
+The Skeleton includes a build file for [Phing](http://www.phing.info). It uses
 the `composer` command so make sure it can be called.
 
 ### Define build properties
