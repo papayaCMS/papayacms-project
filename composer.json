@@ -1,7 +1,7 @@
 {
   "name": "papaya/cms-project",
   "description": "papaya CMS Project Skeleton",
-  "license": "GPL",
+  "license": "GPL-2.0",
   "homepage": "http://www.papaya-cms.com/",
   "minimum-stability": "dev",
   "extra" : {
