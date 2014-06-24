@@ -136,6 +136,18 @@
       <arg path="${directory.export}/source"/>
     </exec>
   </target>
+
+  <!--
+    Generate directory with date
+  -->
+  <target name="directory" depends="export" description="Creating directory with date">
+    <copy todir="${directory.export}/build${time.current}">
+      <fileset dir="${directory.export}/source">
+        <include name="**" />
+      </fileset>
+    </copy>
+  </target>
+  
   <!--
     Generate tag.gz archive
   -->
