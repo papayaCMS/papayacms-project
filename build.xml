@@ -11,9 +11,13 @@
   <property file="build.properties" prefix="configuration" override="true"/>
 
   <property name="executable.composer" value="${configuration.executable.composer}" override="true" />
+  <property name="executable.svn" value="${configuration.executable.svn}" override="true" />
+  <property name="executable.git" value="${configuration.executable.git}" override="true" />
 
   <property name="database.uri" value="${configuration.database.uri}" override="true" />
   <property name="dist.database.uri" value="${configuration.dist.database.uri}" override="true" />
+
+  <property name="revision.current" value="" override="true" />
 
   <tstamp prefix="time"/>
   <property name="time.current" value="${time.DSTAMP}T${time.TSTAMP}"/>
@@ -44,6 +48,38 @@
   </fileset>
 
   <target name="build" depends="composer,config,prepare" description="Install/Configure"/>
+
+  <!--
+    Determine the current code revision from SVN or Git metadata
+   -->
+  <target name="current-revision">
+    <if>
+      <available file=".git" type="dir" />
+      <then>
+        <gitlog
+          gitPath="${executable.git}"
+          repository="."
+          maxCount="1"
+          format="%h"
+          outputProperty="revision.current" />
+      </then>
+
+      <elseif>
+        <available file=".svn" type="dir" />
+        <then>
+          <svnlastrevision
+            svnpath="${executable.svn}"
+            workingcopy="."
+            propertyname="revision.current" />
+        </then>
+      </elseif>
+
+      <else>
+        <property name="revision.current" value="dev" override="true" />
+      </else>
+    </if>
+    <echo message="Current revision is ${revision.current}" />
+  </target>
 
   <!--
     Install composer dependencies
@@ -106,7 +142,7 @@
   <!--
     Generate distribution export directories (Copy files)
   -->
-  <target name="export" depends="clean-build" description="Export distribution">
+  <target name="export" depends="clean-build,current-revision" description="Export distribution">
     <echo message="Prepare export directory" />
     <mkdir dir="${directory.export}/source" />
     <echo message="Copy files" />
@@ -141,15 +177,15 @@
     Generate directory with date
   -->
   <target name="directory" depends="export" description="Creating directory with date">
-    <copy todir="${directory.export}/build${time.current}">
+    <copy todir="${directory.export}/build${time.current}-${revision.current}">
       <fileset dir="${directory.export}/source">
         <include name="**" />
       </fileset>
     </copy>
   </target>
-  
+
   <!--
-    Generate tag.gz archive
+    Generate tar.gz archive
   -->
   <target name="tgz" depends="export" description="Creating tar.gz archive">
     <tar destfile="${directory.export}/latest.tar.gz" compression="gzip">
@@ -159,7 +195,7 @@
     </tar>
     <copy
       file="${directory.export}/latest.tar.gz"
-      tofile="${directory.export}/build${time.current}.tar.gz">
+      tofile="${directory.export}/build${time.current}-${revision.current}.tar.gz">
     </copy>
   </target>
 
@@ -174,7 +210,7 @@
     </zip>
     <copy
       file="${directory.export}/latest.zip"
-      tofile="${directory.export}/build${time.current}.zip">
+      tofile="${directory.export}/build${time.current}-${revision.current}.zip">
     </copy>
   </target>
 
