@@ -53,32 +53,43 @@
     Determine the current code revision from SVN or Git metadata
    -->
   <target name="current-revision">
-    <if>
-      <available file=".git" type="dir" />
-      <then>
-        <gitlog
-          gitPath="${executable.git}"
-          repository="."
-          maxCount="1"
-          format="%h"
-          outputProperty="revision.current" />
-      </then>
+    <trycatch property="vcs.error">
+      <try>
+        <if>
+          <available file=".git" type="dir" />
+          <then>
+            <gitlog
+              gitPath="${executable.git}"
+              repository="."
+              maxCount="1"
+              format="%h"
+              outputProperty="revision.current" />
+          </then>
 
-      <elseif>
-        <available file=".svn" type="dir" />
-        <then>
-          <svnlastrevision
-            svnpath="${executable.svn}"
-            workingcopy="."
-            propertyname="revision.current" />
-        </then>
-      </elseif>
+          <elseif>
+            <available file=".svn" type="dir" />
+            <then>
+              <svnlastrevision
+                svnpath="${executable.svn}"
+                workingcopy="."
+                propertyname="revision.current" />
+            </then>
+          </elseif>
 
-      <else>
-        <property name="revision.current" value="dev" override="true" />
-      </else>
-    </if>
-    <echo message="Current revision is ${revision.current}" />
+          <else>
+            <property name="revision.current" value="dev" override="true" />
+          </else>
+        </if>
+        <echo message="Current revision is ${revision.current}" />
+      </try>
+      <catch>
+        <echo level="warning">There was an error while reading revision information. Current revision is unknown.</echo>
+        <echo level="warning">Please make sure VersionControl_Git and VersionControl_Svn from PEAR are installed.</echo>
+        <echo level="warning">To see the detailed error message, please run phing in debug mode.</echo>
+        <echo level="debug">${vcs.error}</echo>
+        <property name="revision.current" value="unknown" override="true" />
+      </catch>
+    </trycatch>
   </target>
 
   <!--
