@@ -17,6 +17,7 @@
     "papaya/module-standard": "*"
   },
   "require-dev": {
+    "papaya/theme-dynamic": "*",
     "papaya/test-framework": "*"
   }
 }
