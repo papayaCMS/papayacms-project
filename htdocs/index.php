@@ -21,10 +21,11 @@
 /**
 * Including the basic configuration file
 */
-$configuration =  file_exists('./conf.inc.php') ? './conf.inc.php': '../papaya.php';
+$configuration =  file_exists(__DIR__.'/conf.inc.php')
+  ? __DIR__.'/conf.inc.php': __DIR__.'/../papaya.php';
 require_once($configuration);
 
-$bootstrap = dirname(__FILE__).'/../vendor/autoload.php';
+$bootstrap = __DIR__.'/../vendor/autoload.php';
 $error = FALSE;
 if (defined('PAPAYA_MAINTENANCE_MODE') && PAPAYA_MAINTENANCE_MODE) {
   $maintenanceFile = defined('PAPAYA_ERRORDOCUMENT_MAINTENANCE')
@@ -45,7 +46,7 @@ if (defined('PAPAYA_MAINTENANCE_MODE') && PAPAYA_MAINTENANCE_MODE) {
   }
 }
 if ($error) {
-  if (PHP_SAPI == 'cgi' || PHP_SAPI == 'fast-cgi') {
+  if (PHP_SAPI === 'cgi' || PHP_SAPI === 'fast-cgi') {
     @header('Status: 503 Service Unavailable');
   } else {
     @header('HTTP/1.1 503 Service Unavailable');
