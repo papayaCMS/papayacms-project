@@ -23,6 +23,6 @@ composer.phar
 /papaya-data
 
 # Default template and theme
-/template/responsive
+/templates/responsive
 /htdocs/papaya-themes/dynamic
 
