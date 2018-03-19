@@ -45,7 +45,7 @@ directory to your project and develop/maintain the theme there.
 ## Phing build file
 
 The Skeleton includes a build file for [Phing](http://www.phing.info). It uses
-the `composer` command so make sure it can be called.
+the `composer` and `git` commands so make sure they can be called.
 
 ### Define build properties
 
@@ -66,14 +66,22 @@ phing
 As directory:
 
 ```
-phing export
+phing export-directory
 ```
 
 As zip:
 
 ```
-phing zip
+phing export-zip
 ```
+
+As tar gzip:
+
+```
+phing export-tgz
+```
+
+
 
 
 
