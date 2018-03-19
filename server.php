@@ -6,8 +6,8 @@ $uri = $_SERVER['REQUEST_URI'] ?? '';
 $requestedPath = parse_url($uri, PHP_URL_PATH);
 $requestedPath = preg_replace('(^/sid(?:admin)?(?:[^/]+))', '', $requestedPath);
 
-if (file_exists($requestedPath)) {
-  if (is_file($requestedPath)) {
+if (file_exists(PAPAYA_DOCUMENT_ROOT.$requestedPath)) {
+  if (is_file(PAPAYA_DOCUMENT_ROOT.$requestedPath)) {
     return FALSE;
   }
   chdir(PAPAYA_DOCUMENT_ROOT.$requestedPath);
