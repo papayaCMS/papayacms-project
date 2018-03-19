@@ -21,6 +21,10 @@ Adding additional module packages:
 composer require papaya/module-domains
 ```
 
+### Modules inside the project
+
+Project specific modules can be put into the `src/` directory. 
+
 ## Themes and Templates
 
 Themes and templates can be composer packages, too.
