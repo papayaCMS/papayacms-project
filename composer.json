@@ -11,13 +11,13 @@
     }
   },
   "require": {
-    "papaya/cms-core": "*",
-    "papaya/cms-administration": "*",
-    "papaya/module-default": "*",
-    "papaya/module-standard": "*"
+    "papaya/cms-core": "^6.0",
+    "papaya/cms-administration": "^6.0",
+    "papaya/module-default": "1.*",
+    "papaya/module-standard": "1.*"
   },
   "require-dev": {
-    "papaya/theme-dynamic": "*",
-    "papaya/test-framework": "*"
+    "papaya/theme-dynamic": "1.*",
+    "papaya/test-framework": "6.*"
   }
 }

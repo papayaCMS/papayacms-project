@@ -85,8 +85,6 @@ As tar gzip:
 phing export-tgz
 ```
 
-
-
-
+The exports will make use of Git tags.
 
 
