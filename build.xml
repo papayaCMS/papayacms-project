@@ -196,7 +196,7 @@
       <arg path="${directory.export}/source"/>
     </exec>
     <append
-      destFile="${directory.document-root}/revision.inc.php"
+      destFile="${directory.export}/source/htdocs/revision.inc.php"
       append="false"
       overwrite="true"
       text="&lt;?php&#10;define('PAPAYA_WEBSITE_REVISION', '${revision.project}');&#10;define('PAPAYA_VERSION_STRING', '${revision.papaya}');&#10;"/>
