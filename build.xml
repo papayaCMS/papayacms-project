@@ -29,16 +29,14 @@
 
   <fileset id="source" dir="${directory.src}">
     <include name="src/**"/>
-    <include name="composer.json"/>
-    <include name="composer.lock"/>
     <include name="templates/**"/>
     <exclude name="**/.svn/**"/>
     <exclude name="**/.git/**"/>
   </fileset>
 
   <fileset id="dependencies" dir="${directory.src}">
-    <include name="dependencies-install.json"/>
-    <include name="dependencies-install.lock"/>
+    <include name="composer.json"/>
+    <include name="composer.lock"/>
   </fileset>
 
   <fileset id="archives" dir="${directory.export}">
