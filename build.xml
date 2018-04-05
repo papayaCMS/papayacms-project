@@ -31,7 +31,7 @@
     <include name="src/**"/>
     <include name="composer.json"/>
     <include name="composer.lock"/>
-    <exclude name="templates/**"/>
+    <include name="templates/**"/>
     <exclude name="**/.svn/**"/>
     <exclude name="**/.git/**"/>
   </fileset>
