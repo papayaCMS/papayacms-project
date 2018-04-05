@@ -19,9 +19,6 @@
 
   <property name="revision.project" value="" override="true"/>
 
-  <tstamp prefix="time"/>
-  <property name="time.project" value="${time.DSTAMP}T${time.TSTAMP}"/>
-
   <fileset id="public" dir="${directory.document-root}">
     <include name="**"/>
     <exclude name="**/.svn/**"/>
@@ -32,6 +29,8 @@
 
   <fileset id="source" dir="${directory.src}">
     <include name="src/**"/>
+    <include name="composer.json"/>
+    <include name="composer.lock"/>
     <exclude name="templates/**"/>
     <exclude name="**/.svn/**"/>
     <exclude name="**/.git/**"/>
@@ -167,7 +166,7 @@
   <!--
     Generate distribution export directories (Copy files)
   -->
-  <target name="export" depends="clean-build,project-revision" description="Export distribution" hidden="true">
+  <target name="export" depends="clean-build,project-revision,papaya-revision" description="Export distribution" hidden="true">
     <echo message="Prepare export directory"/>
     <mkdir dir="${directory.export}/source"/>
     <echo message="Copy files"/>
@@ -196,6 +195,11 @@
       <arg value="--working-dir"/>
       <arg path="${directory.export}/source"/>
     </exec>
+    <append
+      destFile="${directory.document-root}/revision.inc.php"
+      append="false"
+      overwrite="true"
+      text="&lt;?php&#10;define('PAPAYA_WEBSITE_REVISION', '${revision.project}');&#10;define('PAPAYA_VERSION_STRING', '${revision.papaya}');&#10;"/>
   </target>
 
   <!--
@@ -253,7 +257,7 @@
     <trycatch property="error">
       <try>
         <adhoc-task name="dependencies-install-version">
-        <![CDATA[
+          <![CDATA[
         class PapayaVersionTask extends Task {
 
           function main() {
