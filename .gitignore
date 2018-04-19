@@ -21,10 +21,13 @@ composer.phar
 
 # papaya CMS
 /papaya.php
+/papaya.sqlite
 /htdocs/conf.inc.php
 /htdocs/revisions.inc.php
 /htdocs/papaya/
 /papaya-data/
+
+
 
 # Default template and theme
 /templates/responsive/
