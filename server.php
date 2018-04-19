@@ -15,8 +15,8 @@ if (
   if (is_file(PAPAYA_DOCUMENT_ROOT.$requestedPath)) {
     header('Location: ' . $requestedPath);
   }
-  chdir(PAPAYA_DOCUMENT_ROOT . $requestPathOriginal);
-  include(PAPAYA_DOCUMENT_ROOT.'index.php');
+  chdir(PAPAYA_DOCUMENT_ROOT.$requestedPath);
+  include('index.php');
 } elseif (preg_match('(^(?<path>/papaya)/module_(?<module>.*)\.php)', $requestedPath, $match)) {
   chdir(PAPAYA_DOCUMENT_ROOT.'/papaya');
   include(PAPAYA_DOCUMENT_ROOT.'/papaya/module.php');
@@ -28,5 +28,5 @@ if (
   return FALSE;
 } else {
   chdir(PAPAYA_DOCUMENT_ROOT);
-  include(PAPAYA_DOCUMENT_ROOT.'/index.php');
+  include(PAPAYA_DOCUMENT_ROOT.'index.php');
 }
