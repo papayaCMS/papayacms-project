@@ -32,6 +32,17 @@ Copy the file `dist.build.properties` to `build.properties` and modify it. At th
 moment it includes to options for database connections. One for the development
 and one for the deployment.
 
+### Initialize Git repository (optional)
+
+The skeleton is optimized to be used with Git. Now would be a good point
+to initialize the repository.
+
+```
+git init
+git add *
+git commit -m"new project" 
+```
+
 ### Start the Webserver
 
 You can use included shell scripts (`server.sh`, `sever.bat`) to start the webserver
@@ -80,8 +91,8 @@ directory to your project and develop/maintain the theme there.
 
 ## Export the project for deployment
 
-The `dist.build.properties`/`build.properties` contains a property `dist.database.uri`
-that will be used for the configuration file in exports. 
+The `build.properties` (after copied from `dist.build.properties`) contains a 
+property `dist.database.uri` that will be used for the configuration file in exports. 
 
 Additionally the exports will make use of Git tags. If the current commit is tagged this
 tag will be used for the file/directory name.
