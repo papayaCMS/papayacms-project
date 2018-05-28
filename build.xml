@@ -46,8 +46,6 @@
 
   <target name="build" depends="dependencies-install,config,prepare" description="Install/Configure"/>
 
-
-
   <!--
     Install dependencies-install dependencies
    -->
@@ -205,7 +203,7 @@
   -->
   <target name="fetch-revisions" depends="project-revision, papaya-revision" hidden="true">
     <append
-      destFile="${directory.document-root}/revisions.inc.php"
+      destFile="${directory.document-root}/revision.inc.php"
       append="false"
       overwrite="true"
       text="&lt;?php&#10;define('PAPAYA_WEBSITE_REVISION', '${revision.project}');&#10;define('PAPAYA_VERSION_STRING', '${revision.papaya}');&#10;"/>

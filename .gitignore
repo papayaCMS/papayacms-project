@@ -23,7 +23,7 @@ composer.phar
 /papaya.php
 /papaya.sqlite
 /htdocs/conf.inc.php
-/htdocs/revisions.inc.php
+/htdocs/revision.inc.php
 /htdocs/papaya/
 /papaya-data/
 
