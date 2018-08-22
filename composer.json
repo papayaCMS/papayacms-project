@@ -2,8 +2,7 @@
   "name": "papaya/cms-project",
   "description": "papaya CMS Project Skeleton",
   "license": "GPL-2.0",
-  "homepage": "http://www.papaya-cms.com/",
-  "minimum-stability": "dev",
+  "homepage": "http://www.papaya-cms.com/"
   "extra" : {
     "document-root" : "htdocs/",
     "papaya" : {
@@ -11,6 +10,7 @@
     }
   },
   "require": {
+    "php": ">=5.6",
     "papaya/cms-core": "^6.0",
     "papaya/cms-administration": "^6.0",
     "papaya/module-default": "1.*",
