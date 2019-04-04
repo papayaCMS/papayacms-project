@@ -8,6 +8,10 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^/?papaya/module_([^/.]+)\.[a-z]{3,4} /papaya/module.php?p_module=$1 [L,QSA]
 
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^/?papaya/(.*) /papaya/index.php [QSA,L]
+
 # media files - public / static
 RewriteRule ^/?[^./]*\.(thumb)\.((.).*) - [E=mediaFile:/papaya-files/thumbs/$3/$2]
 RewriteRule ^/?[^./]*\.(media)\.((.).*) - [E=mediaFile:/papaya-files/files/$3/$2]
