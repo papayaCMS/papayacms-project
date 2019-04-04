@@ -11,8 +11,8 @@
   },
   "require": {
     "php": ">=5.6",
-    "papaya/cms-core": "^6.0",
-    "papaya/cms-administration": "^6.0",
+    "papaya/cms-core": "^6.7",
+    "papaya/cms-administration": "^6.7",
     "papaya/module-default": "1.*",
     "papaya/module-standard": "1.*"
   },
