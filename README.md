@@ -3,6 +3,9 @@
 This is a project skeleton for your own [papayaCMS](http://www.papaya-cms.com) projects. It allows to use
 [Composer](http://getcomposer.org) for project initialization.
 
+It includes a build file for [Phing](http://www.phing.info). It uses
+the `composer` and `git` commands so make sure they can be called.
+
 ```
 composer create-project papaya/cms-project projectname
 ```
@@ -13,15 +16,26 @@ If you like to use the latest development versions use:
 composer create-project papaya/cms-project projectname -s dev
 ```
 
-## Local Development Server
+## Using Phive
+
+You can use Phive to install tools for papaya. Tools will be installed into the subdirectory `tools/`.
+
+```
+cd projectname
+phive install
+tools/phing
+```
+
+## Manually
+
+Make sure that you can call `phing` and run it.
 
 ```
 cd projectname
 phing
 ```
 
-The Skeleton includes a build file for [Phing](http://www.phing.info). It uses
-the `composer` and `git` commands so make sure they can be called.
+## Local Development Server
 
 By default the skeleton is configured to use a SQLite 3 database and
 can work with the PHP built-in webserver. 
@@ -45,16 +59,43 @@ git commit -m"new project"
 
 ### Start the Webserver
 
-You can use included shell scripts (`server.sh`, `sever.bat`) to start the webserver
+You can use build scripts to start the webserver
 for your papaya CMS project on port 8080.
 
 ```
-server
+phing run
 ```
 
-This calls `php -S localhost:8080 -t ./htdocs server.php`.
+This will install the dependecies (`composer install`), update the revision file and start the PHP built-in webserver.
 
 Open the browser at `http://localhost:8080/papaya` to continue the setup.
+
+### Update Project Dependencies
+
+Install the dependencies as defined by the repository (composer.lock):
+
+```
+phing dependencies-install
+```
+
+Update the dependencies (composer.json):
+
+```
+phing dependencies-update
+```
+
+Because papaya CMS uses composer you can call `composer install` to install the dependencies
+defined by the repository or `composer update` to update them. However this will not update 
+the revision file (Used to display project and papaya core version in administration interface).
+
+### Cloning An Existing Project
+
+After you clone an existing project you will have to call `composer install` directly.
+
+The main build file is provided by the papaya CMS core. If you clone an existing project repository
+the dependencies are not available so neither are the build tasks. Initially the dependencies were
+installed by `composer create-project`. So you will have to install them directly once (or if you delete 
+the `vendor` directory.
 
 ## Modules
 
@@ -97,23 +138,6 @@ property `dist.database.uri` that will be used for the configuration file in exp
 Additionally the exports will make use of Git tags. If the current commit is tagged this
 tag will be used for the file/directory name.
 
-As directory:
-
 ```
-phing export-directory
+phing export
 ```
-
-As zip:
-
-```
-phing export-zip
-```
-
-As tar gzip:
-
-```
-phing export-tgz
-```
-
-
-
