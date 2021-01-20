@@ -23,6 +23,7 @@ You can use Phive to install tools for papaya. Tools will be installed into the 
 ```
 cd projectname
 phive install
+composer install
 tools/phing
 ```
 
