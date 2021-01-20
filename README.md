@@ -33,6 +33,7 @@ Make sure that you can call `phing` and run it.
 
 ```
 cd projectname
+composer install
 phing
 ```
 
